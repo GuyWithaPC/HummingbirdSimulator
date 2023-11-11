@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@export var gravity = 100.0
+@export var gravity = 500.0
 @export var tilt_speed = 2.0
 
 var throttle = gravity
@@ -33,19 +33,19 @@ func _physics_process(delta: float):
 	# Change the sprite direction depending on tilt
 	if rotation <= 0:
 		if $Sprite.flip_h:
-			$Sprite.scale.x = move_toward($Sprite.scale.x, 0, delta*15)
+			$Sprite.scale.x = move_toward($Sprite.scale.x, 0, delta*10)
 			if $Sprite.scale.x < 0.1:
 				$Sprite.flip_h = false
 		else:
-			$Sprite.scale.x = move_toward($Sprite.scale.x, 1, delta*15)
+			$Sprite.scale.x = move_toward($Sprite.scale.x, 1, delta*10)
 			$Sprite.flip_h = false
 	else:
 		if !$Sprite.flip_h:
-			$Sprite.scale.x = move_toward($Sprite.scale.x, 0, delta*15)
+			$Sprite.scale.x = move_toward($Sprite.scale.x, 0, delta*10)
 			if $Sprite.scale.x < 0.1:
 				$Sprite.flip_h = true
 		else:
-			$Sprite.scale.x = move_toward($Sprite.scale.x, 1, delta*15)
+			$Sprite.scale.x = move_toward($Sprite.scale.x, 1, delta*10)
 			$Sprite.flip_h = true
 
 	move_and_slide()
