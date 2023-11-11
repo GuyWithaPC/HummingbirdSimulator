@@ -1,18 +1,30 @@
-[gd_scene load_steps=9 format=3 uid="uid://r47hkyg65bmd"]
+[gd_scene load_steps=13 format=3 uid="uid://r47hkyg65bmd"]
 
 [ext_resource type="Script" path="res://Scripts/PlayerController.gd" id="1_0e1xv"]
 [ext_resource type="SpriteFrames" uid="uid://b0yslqpxxnwdm" path="res://Sprites/bird.tres" id="1_gns27"]
 [ext_resource type="Texture2D" uid="uid://8m2oicjhqjgd" path="res://Sprites/Forest/Parallax/0.png" id="3_0ygj3"]
+[ext_resource type="Texture2D" uid="uid://47c7rsfidm8v" path="res://Sprites/GUI/progressbar_back.png" id="3_dj04a"]
 [ext_resource type="Texture2D" uid="uid://cocgdt3vv3x73" path="res://Sprites/Forest/Parallax/1.png" id="4_8ywe3"]
+[ext_resource type="Texture2D" uid="uid://bu8dwkgvv28vd" path="res://Sprites/GUI/progressbar_front.png" id="4_k0lio"]
 [ext_resource type="Texture2D" uid="uid://cpue3eyw7544q" path="res://Sprites/Forest/Parallax/2.png" id="5_gyq3f"]
 [ext_resource type="Texture2D" uid="uid://cqpelaiehkdmr" path="res://Sprites/Forest/Parallax/3.png" id="6_57doj"]
 [ext_resource type="Texture2D" uid="uid://bg5yl878uuag2" path="res://Sprites/Forest/Parallax/4.png" id="7_dc86v"]
+[ext_resource type="AudioStream" uid="uid://cxky66crsvrjj" path="res://Audio/lookOut.ogg" id="10_xjepl"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5vn4u"]
+radius = 12.0416
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_w3llq"]
 radius = 12.0
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_0e1xv")
+
+[node name="Beak" type="Area2D" parent="."]
+position = Vector2(-12, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Beak"]
+shape = SubResource("CircleShape2D_5vn4u")
 
 [node name="Collider" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_w3llq")
@@ -22,11 +34,30 @@ texture_filter = 1
 sprite_frames = ExtResource("1_gns27")
 
 [node name="Camera" type="Camera2D" parent="."]
-ignore_rotation = false
 zoom = Vector2(4, 4)
-position_smoothing_enabled = true
-rotation_smoothing_enabled = true
 rotation_smoothing_speed = 0.1
+
+[node name="GUI" type="Control" parent="Camera"]
+z_index = 1000
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ProgressBar" type="TextureProgressBar" parent="Camera/GUI"]
+texture_filter = 1
+layout_mode = 0
+offset_left = -141.0
+offset_top = -79.0
+offset_right = -137.0
+offset_bottom = -52.0
+max_value = 3.0
+step = 0.01
+value = 2.0
+fill_mode = 3
+texture_under = ExtResource("3_dj04a")
+texture_progress = ExtResource("4_k0lio")
+texture_progress_offset = Vector2(6.5, 10)
 
 [node name="Background" type="ParallaxBackground" parent="Camera"]
 scale = Vector2(1.2, 1.2)
@@ -96,3 +127,6 @@ texture = ExtResource("7_dc86v")
 
 [node name="Audio" type="AudioStreamPlayer" parent="."]
 max_polyphony = 2
+
+[node name="LookOut" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_xjepl")
