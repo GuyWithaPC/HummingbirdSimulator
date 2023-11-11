@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://b5uuw6bwj521h"]
+
+[ext_resource type="PackedScene" uid="uid://r47hkyg65bmd" path="res://Prefabs/Player.tscn" id="1_74ohp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h1j1k"]
+size = Vector2(40, 40)
+
+[node name="PlayerControllerTest" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_74ohp")]
+
+[node name="Wall" type="StaticBody2D" parent="."]
+position = Vector2(-144, 41)
+scale = Vector2(7.2, 1)
+
+[node name="ColorRect" type="ColorRect" parent="Wall"]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall"]
+position = Vector2(20, 20)
+shape = SubResource("RectangleShape2D_h1j1k")
