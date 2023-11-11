@@ -10,7 +10,8 @@ size = Vector2(40, 40)
 [node name="Player" parent="." instance=ExtResource("1_74ohp")]
 
 [node name="Wall" type="StaticBody2D" parent="."]
-position = Vector2(-20, 38)
+position = Vector2(-144, 41)
+scale = Vector2(7.2, 1)
 
 [node name="ColorRect" type="ColorRect" parent="Wall"]
 offset_right = 40.0

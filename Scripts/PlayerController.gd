@@ -3,17 +3,27 @@ extends CharacterBody2D
 @export var gravity = 500.0
 @export var tilt_speed = 2.0
 
+var begin_audio = preload("res://Audio/begin.ogg")
+
 var throttle = gravity
 var throttle_speed = gravity
 var MAX_THROTTLE = gravity * 2
 
+var timer = 3.0
+
 func _ready():
-	$Sprite.play()
+	$Audio.stream = begin_audio
+	$Audio.play()
 
 func adjust_throttle(amount: float):
 	throttle = clamp(throttle + amount,0,MAX_THROTTLE)
 
 func _physics_process(delta: float):
+	if (timer > 0):
+		timer -= delta
+		return
+	else:
+		$Sprite.play()
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y += gravity * delta
