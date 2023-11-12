@@ -11,26 +11,48 @@ var MAX_THROTTLE = gravity * 2
 
 var timer = 3.0 / 1.5
 
+var dead_timer = 2.0
+
 var nectar = 2.0
 
 var look_out = false
 
 var loser = false
 
+var generated = false
+
+var score = 0
+
 func _ready():
+	# get out of walls
+	move_and_slide()
+
+func generation_finished():
+	generated = true
 	$Begin.play()
 
 func adjust_throttle(amount: float):
 	throttle = clamp(throttle + amount,0,MAX_THROTTLE)
 
 func _process(delta: float):
+	if !generated:
+		return
 	if loser:
+		dead_timer -= delta
+		if dead_timer < 0:
+			get_node("/root/Globals").scored(score)
+			get_tree().change_scene_to_file("res://Scenes/EndScreen.tscn")
 		return
 	$Camera/GUI/ProgressBar.value = nectar
 	for area in $Beak.get_overlapping_areas():
 		if !area.is_in_group("Flowers"):
 			continue
-		nectar = clamp(nectar + area.get_nectar(delta),0,3)
+		var got_nectar = area.get_nectar(delta)
+		if got_nectar == -69:
+			score += 1
+			$Camera/GUI/Score.text = str(score)
+		else:
+			nectar = clamp(nectar + got_nectar,0,3)
 	if (timer <= 0):
 		nectar -= (throttle / MAX_THROTTLE) * (delta / 5)
 		if nectar < 1 and !look_out:
@@ -47,6 +69,8 @@ func _process(delta: float):
 			$Music.stop()
 
 func _physics_process(delta: float):
+	if !generated:
+		return
 	if loser:
 		return
 	if (timer > 0):

@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://r47hkyg65bmd"]
+[gd_scene load_steps=16 format=3 uid="uid://r47hkyg65bmd"]
 
 [ext_resource type="Script" path="res://Scripts/PlayerController.gd" id="1_0e1xv"]
 [ext_resource type="SpriteFrames" uid="uid://b0yslqpxxnwdm" path="res://Sprites/bird.tres" id="1_gns27"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://cocgdt3vv3x73" path="res://Sprites/Forest/Parallax/1.png" id="4_8ywe3"]
 [ext_resource type="Texture2D" uid="uid://bu8dwkgvv28vd" path="res://Sprites/GUI/progressbar_front.png" id="4_k0lio"]
 [ext_resource type="Texture2D" uid="uid://cpue3eyw7544q" path="res://Sprites/Forest/Parallax/2.png" id="5_gyq3f"]
+[ext_resource type="FontFile" uid="uid://dchw1m33mtm5t" path="res://Fonts/Kenney Blocks.ttf" id="5_vfxw7"]
 [ext_resource type="Texture2D" uid="uid://cqpelaiehkdmr" path="res://Sprites/Forest/Parallax/3.png" id="6_57doj"]
 [ext_resource type="Texture2D" uid="uid://bg5yl878uuag2" path="res://Sprites/Forest/Parallax/4.png" id="7_dc86v"]
 [ext_resource type="AudioStream" uid="uid://qxbdweacbtmk" path="res://Audio/begin.ogg" id="10_1o7s2"]
@@ -60,6 +61,20 @@ fill_mode = 3
 texture_under = ExtResource("3_dj04a")
 texture_progress = ExtResource("4_k0lio")
 texture_progress_offset = Vector2(6.5, 10)
+
+[node name="Score" type="Label" parent="Camera/GUI"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 102.0
+offset_top = -78.0
+offset_right = 142.0
+offset_bottom = -51.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("5_vfxw7")
+text = "0"
+horizontal_alignment = 2
 
 [node name="Background" type="ParallaxBackground" parent="Camera"]
 scale = Vector2(1.2, 1.2)

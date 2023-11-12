@@ -18,11 +18,20 @@ extends WorldGenerator
 # @onready var _grid_drawer := $GridDrawer
 @onready var _player := $Player
 
+@onready var setup_timer = Timer.new()
 
 func _ready() -> void:
 	generate()
+	self.add_child(setup_timer)
+	setup_timer.wait_time = 1
+	setup_timer.one_shot = true
+	setup_timer.connect("timeout", start)
+	setup_timer.start()
 	# _grid_drawer.setup(sector_size, sector_axis_count)
 
+func start():
+	setup_timer.queue_free()
+	_player.generation_finished()
 
 func _physics_process(_delta: float) -> void:
 	var sector_offset := Vector2.ZERO
