@@ -3,15 +3,13 @@ extends CharacterBody2D
 @export var gravity = 500.0
 @export var tilt_speed = 2.0
 
-var begin_audio = preload("res://Audio/begin.ogg")
-var succ = preload("res://Audio/slurp.ogg")
 var bad_boom = preload("res://Prefabs/BadBoom.tscn")
 
 var throttle = gravity
 var throttle_speed = gravity
 var MAX_THROTTLE = gravity * 2
 
-var timer = 3.0
+var timer = 3.0 / 1.5
 
 var nectar = 2.0
 
@@ -20,8 +18,7 @@ var look_out = false
 var loser = false
 
 func _ready():
-	$Audio.stream = begin_audio
-	$Audio.play()
+	$Begin.play()
 
 func adjust_throttle(amount: float):
 	throttle = clamp(throttle + amount,0,MAX_THROTTLE)
@@ -47,6 +44,7 @@ func _process(delta: float):
 			boom.position = self.position
 			self.hide()
 			loser = true
+			$Music.stop()
 
 func _physics_process(delta: float):
 	if loser:
@@ -56,6 +54,8 @@ func _physics_process(delta: float):
 		return
 	else:
 		$Sprite.play()
+		if !$Music.playing:
+			$Music.play()
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y += gravity * delta

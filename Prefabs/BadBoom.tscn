@@ -39,6 +39,7 @@ process_material = SubResource("ParticleProcessMaterial_dd07f")
 one_shot = true
 explosiveness = 0.95
 script = ExtResource("1_2pf0l")
-possible_audio = [ExtResource("2_y816r"), ExtResource("3_jiri8"), ExtResource("4_dtcwn"), ExtResource("5_es0r5"), ExtResource("6_0xtl5"), ExtResource("7_udsfk"), ExtResource("8_7jpii"), ExtResource("9_a3n60")]
+possible_audio = Array[AudioStream]([ExtResource("2_y816r"), ExtResource("3_jiri8"), ExtResource("4_dtcwn"), ExtResource("5_es0r5"), ExtResource("6_0xtl5"), ExtResource("7_udsfk"), ExtResource("8_7jpii"), ExtResource("9_a3n60")])
 
 [node name="Audio" type="AudioStreamPlayer" parent="."]
+pitch_scale = 1.5

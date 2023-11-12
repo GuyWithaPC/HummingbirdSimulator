@@ -30,3 +30,4 @@ explosiveness = 0.99
 script = ExtResource("1_y47mi")
 
 [node name="Audio" type="AudioStreamPlayer" parent="."]
+pitch_scale = 1.5

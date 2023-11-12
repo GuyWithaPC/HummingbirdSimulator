@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://r47hkyg65bmd"]
+[gd_scene load_steps=15 format=3 uid="uid://r47hkyg65bmd"]
 
 [ext_resource type="Script" path="res://Scripts/PlayerController.gd" id="1_0e1xv"]
 [ext_resource type="SpriteFrames" uid="uid://b0yslqpxxnwdm" path="res://Sprites/bird.tres" id="1_gns27"]
@@ -9,7 +9,9 @@
 [ext_resource type="Texture2D" uid="uid://cpue3eyw7544q" path="res://Sprites/Forest/Parallax/2.png" id="5_gyq3f"]
 [ext_resource type="Texture2D" uid="uid://cqpelaiehkdmr" path="res://Sprites/Forest/Parallax/3.png" id="6_57doj"]
 [ext_resource type="Texture2D" uid="uid://bg5yl878uuag2" path="res://Sprites/Forest/Parallax/4.png" id="7_dc86v"]
+[ext_resource type="AudioStream" uid="uid://qxbdweacbtmk" path="res://Audio/begin.ogg" id="10_1o7s2"]
 [ext_resource type="AudioStream" uid="uid://cxky66crsvrjj" path="res://Audio/lookOut.ogg" id="10_xjepl"]
+[ext_resource type="AudioStream" uid="uid://cvwcor6uxgd25" path="res://Audio/Theme for Harold var 3.mp3" id="12_rpn67"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5vn4u"]
 radius = 12.0416
@@ -125,8 +127,15 @@ offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("7_dc86v")
 
-[node name="Audio" type="AudioStreamPlayer" parent="."]
+[node name="Begin" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_1o7s2")
+pitch_scale = 1.5
 max_polyphony = 2
 
 [node name="LookOut" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("10_xjepl")
+pitch_scale = 2.0
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_rpn67")
+pitch_scale = 1.25
