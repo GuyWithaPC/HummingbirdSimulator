@@ -11,12 +11,18 @@ config_version=5
 [application]
 
 config/name="Hummingbird Simulator"
+run/main_scene="res://Scenes/MainLevel.tscn"
 config/features=PackedStringArray("4.1", "GL Compatibility")
 config/icon="res://icon.svg"
+
 
 [autoload]
 
 Globals="*res://Scripts/Globals.gd"
+
+[display]
+
+window/stretch/mode="viewport"
 
 [input]
 
