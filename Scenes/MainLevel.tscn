@@ -1,0 +1,16 @@
+[gd_scene load_steps=5 format=3 uid="uid://b5uuw6bwj521h"]
+
+[ext_resource type="Script" path="res://Scripts/procedural.gd" id="1_jcke4"]
+[ext_resource type="PackedScene" uid="uid://r47hkyg65bmd" path="res://Prefabs/Player.tscn" id="1_un6jl"]
+[ext_resource type="PackedScene" uid="uid://b38pm48rbg6no" path="res://Prefabs/Flower.tscn" id="3_0rdn6"]
+[ext_resource type="PackedScene" uid="uid://decahkqp48smp" path="res://Prefabs/SquareObstacle.tscn" id="3_rjh5f"]
+
+[node name="MainLevel" type="Node2D"]
+script = ExtResource("1_jcke4")
+Obstacles = Array[PackedScene]([ExtResource("3_0rdn6"), ExtResource("3_rjh5f")])
+flower_density = 10
+
+[node name="Player" parent="." instance=ExtResource("1_un6jl")]
+
+[node name="Flower" parent="." instance=ExtResource("3_0rdn6")]
+position = Vector2(94, 13)
