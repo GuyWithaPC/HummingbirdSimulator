@@ -1,7 +1,6 @@
 class_name procedural
 extends WorldGenerator
 
-# TODO: What the hell is this?
 # @export var Flower: PackedScene
 @export var Obstacles: Array[PackedScene]
 @export var flower_density := 3
@@ -16,8 +15,7 @@ extends WorldGenerator
 @onready var _subsector_margin := _subsector_base_size * subsector_margin_proportion
 @onready var _subsector_size := _subsector_base_size - _subsector_margin * 2
 
-# TODO: Should be a tilemap thingy
-@onready var _grid_drawer := $GridDrawer
+# @onready var _grid_drawer := $GridDrawer
 @onready var _player := $Player
 
 

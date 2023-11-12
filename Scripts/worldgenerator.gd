@@ -17,7 +17,7 @@ enum { AXIS_X, AXIS_Y }
 @export var sector_axis_count := 10
 ## Seed to generate the world. We will use a hash function to convert it to a unique number for each sector. See the `make_seed_for()` function below.
 ## This makes the world generation deterministic.
-@export var start_seed := "world_generation"
+@onready var start_seed := randf()
 
 ## This dictionary can store important data about any generated sector, or even custom data for persistent worlds.
 var _sectors := {}
