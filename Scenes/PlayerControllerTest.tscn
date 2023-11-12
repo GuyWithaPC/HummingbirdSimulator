@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://b5uuw6bwj521h"]
+[gd_scene load_steps=4 format=3 uid="uid://waq2ijqu3w3l"]
 
 [ext_resource type="PackedScene" uid="uid://r47hkyg65bmd" path="res://Prefabs/Player.tscn" id="1_74ohp"]
 [ext_resource type="TileSet" uid="uid://bt8rd73lgmux4" path="res://Sprites/Forest/forest.tres" id="2_bg4q4"]
