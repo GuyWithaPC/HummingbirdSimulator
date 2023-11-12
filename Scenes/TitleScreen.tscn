@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://cdomsx680v3f"]
+[gd_scene load_steps=8 format=3 uid="uid://cdomsx680v3f"]
 
 [ext_resource type="Texture2D" uid="uid://8m2oicjhqjgd" path="res://Sprites/Forest/Parallax/0.png" id="1_n6t4f"]
+[ext_resource type="Script" path="res://Scripts/TitleScreen.gd" id="1_svn42"]
 [ext_resource type="Texture2D" uid="uid://cocgdt3vv3x73" path="res://Sprites/Forest/Parallax/1.png" id="2_bucc3"]
 [ext_resource type="Texture2D" uid="uid://cpue3eyw7544q" path="res://Sprites/Forest/Parallax/2.png" id="3_nqxm3"]
 [ext_resource type="Texture2D" uid="uid://cqpelaiehkdmr" path="res://Sprites/Forest/Parallax/3.png" id="4_brfwq"]
@@ -14,6 +15,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_svn42")
 
 [node name="Background" type="ParallaxBackground" parent="."]
 scale = Vector2(3.61, 3.61)
@@ -111,3 +113,5 @@ grow_vertical = 2
 theme_override_fonts/font = ExtResource("6_s74yv")
 theme_override_font_sizes/font_size = 64
 text = "START"
+
+[connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]

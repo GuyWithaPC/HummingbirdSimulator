@@ -22,6 +22,7 @@ func get_nectar(delta) -> float:
 		get_parent().add_child(boom_instance)
 		boom_instance.position = self.position
 		self.queue_free()
+		return -69
 	return nectar_returned
 
 

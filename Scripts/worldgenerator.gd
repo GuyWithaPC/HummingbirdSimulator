@@ -105,7 +105,9 @@ func _update_along_axis(axis: int, difference: float) -> void:
 		if _sectors.has(key):
 			var sector_data: Array = _sectors[key]
 			for d in sector_data:
-				d.queue_free()
+				if is_instance_valid(d):
+					if !d.is_queued_for_deletion():
+						d.queue_free()
 			var _found := _sectors.erase(key)
 
 	# And now we're done updating the world, we update the `_current_sector`.
